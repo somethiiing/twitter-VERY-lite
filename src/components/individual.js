@@ -10,6 +10,7 @@ class Individual extends React.Component {
     this.state = {
       user: '',
       tweet: '',
+      date: new Date(),
       newTweet: ''
     }
 
@@ -22,8 +23,8 @@ class Individual extends React.Component {
     fetch(`/api/user/${user}`)
       .then(res => res.json())
       .then(data => {
-        let { user, tweet } = data.data;
-        this.setState({ user, tweet })
+        let { user, tweet, date } = data.data;
+        this.setState({ user, tweet, date });
       });
   }
 
@@ -34,15 +35,17 @@ class Individual extends React.Component {
 
   newTweetSubmit() {
     const { user, newTweet } = this.state;
-    postData('/api/update/', { user, tweet: newTweet })
-      .then(data => this.setState({ tweet: data.data.tweet, newTweet: '' }))
+    let date = new Date();
+    postData('/api/update/', { user, tweet: newTweet, date })
+      .then(data => {
+        this.setState({ tweet: data.data.tweet, newTweet: '' })})
       .catch(error => console.error(error));
   }
 
   render() {
-    let { user, tweet, newTweet } = this.state;
+    let { user, tweet, date, newTweet } = this.state;
     return (
-      <div>
+      <div className='publicPage'>
         Individual!!!
         <br/>
         {user}
@@ -57,7 +60,7 @@ class Individual extends React.Component {
         <br/>
         <br/>
         <br/>
-        <Tweet user={user} tweet={tweet} />
+        <Tweet user={user} tweet={tweet} date={date} />
         <br/>
       </div>
     );

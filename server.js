@@ -20,7 +20,8 @@ db.on('error', console.error.bind(console, 'mongoose connection error:'));
 
 const UserSchema = new mongoose.Schema({
   user: { type: String, required: true, unique: true },
-  tweet: { type: String, required: false }
+  tweet: { type: String, required: false },
+  date: Date
 });
 const UserDataModel = mongoose.model( 'userData', UserSchema );
 
@@ -43,7 +44,8 @@ app.get('/api/user/:user', (req, res) => {
     if (!data) {
       let userData = new UserDataModel({
         user,
-        tweet: 'This user has not sent a tweet yet. Send one for them!'
+        tweet: 'This user has not sent a tweet yet. Send one for them!',
+        date: new Date()
       });
       userData.save( (err, query) => {
         if (err) console.log('/api/user/', err);
@@ -57,18 +59,19 @@ app.get('/api/user/:user', (req, res) => {
 
 // update tweet
 app.post('/api/update/', (req, res) => {
-  let { user, tweet } = req.body;
-  UserDataModel.findOneAndUpdate({ user }, { user, tweet }, { new: true }, (err, data) => {
+  let { user, tweet, date } = req.body;
+  UserDataModel.findOneAndUpdate({ user }, { user, tweet, date }, { new: true }, (err, data) => {
     if (err) console.log('/api/update', err);
     res.send({ status: 'tweet updated', data });
   });
 });
 
 app.get('/api/all', (req, res) => {
-  UserDataModel.find({}, (err, users) => {
-    if (err) console.log('/api/all', err);
-    res.send({ status: 'all users found', users });
-  });
+  UserDataModel.find({})
+    .sort('-date').exec((err, users) => {
+      if (err) console.log('/api/all', err);
+      res.send({ status: 'all users found', users });
+    });
 });
 
 // clear database route

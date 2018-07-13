@@ -2,6 +2,11 @@ import React from 'react';
 import { Tweet } from './';
 import './home.css';
 
+let footerButtons = ['About', 'Help Center', 'Terms',
+  'Privacy Policy', 'Cookies', 'Ads Info',
+  'Brand', 'Blog', 'Status', 'Apps',
+  'Jobs', 'Marketing', 'Businesses', 'Developers' ];
+
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -11,6 +16,7 @@ class Home extends React.Component {
     }
 
     this.renderTweets = this.renderTweets.bind(this);
+    this.renderFooterButtons = this.renderFooterButtons.bind(this);
   }
 
   componentDidMount() {
@@ -23,9 +29,17 @@ class Home extends React.Component {
     return tweets.map((elem, idx) => {
       return (
         <div key={`tweet-${idx}`} className='tweetDiv'>
-          <Tweet user={elem.user} tweet={elem.tweet} />
+          <Tweet user={elem.user} tweet={elem.tweet} date={elem.date} />
         </div>);
     });
+  }
+
+  renderFooterButtons(arr) {
+    return arr.map( (elem, idx) => {
+      return (
+        <button className='footer footerButton' key={`footer-${elem}`}>{elem}</button>
+      )
+    })
   }
 
   render() {
@@ -37,7 +51,10 @@ class Home extends React.Component {
         <div className='tweets card'>
           {this.renderTweets(tweets)}
         </div>
-        <div className='otherInfo card'></div>
+        <div className='otherInfo card'>
+          <div className='footer footerText'>© 2018 Twitter-lite</div>
+          {this.renderFooterButtons(footerButtons)}
+        </div>
       </div>
     );
   }
