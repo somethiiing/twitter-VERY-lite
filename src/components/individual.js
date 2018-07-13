@@ -2,6 +2,7 @@ import React from 'react';
 import { postData } from '../Utilities';
 import { withRouter } from 'react-router-dom';
 import { Tweet } from './';
+import './individual.css';
 
 class Individual extends React.Component {
   constructor(props) {
@@ -46,22 +47,15 @@ class Individual extends React.Component {
     let { user, tweet, date, newTweet } = this.state;
     return (
       <div className='publicPage'>
-        Individual!!!
-        <br/>
-        {user}
-        <br/>
-        {tweet}
-        <br/>
-        <br/>
-        <br/>
-        <input type='text' value={newTweet} onChange={this.onNewTweetChange} />
-        <button onClick={this.newTweetSubmit} >Send Tweet</button>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <Tweet user={user} tweet={tweet} date={date} />
-        <br/>
+        <div className='individualPageCard card'>
+          <div className='individualTweetDiv'>
+            <Tweet user={user} tweet={tweet} date={date} />
+          </div>
+          <div className='newTweet'>
+            <input className='newTweetInput' type='text' value={newTweet} onChange={this.onNewTweetChange} />
+            <button className='headerTweetButton' onClick={this.newTweetSubmit} >Send Tweet</button>
+          </div>
+        </div>
       </div>
     );
   }

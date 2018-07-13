@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './tweet.css';
 
 const Tweet = (props) => {
@@ -24,10 +25,10 @@ const Tweet = (props) => {
   return (
     <div className='tweet'>
       <div className='profilePicBar'>
-        <img className='profilePic' src={tempProfilePic}  />
+        <Link to={`/${user}`}><img className='profilePic' src={tempProfilePic}  /></Link>
       </div>
       <div className='tweetArea'>
-        <div className='tweetUser'>{`@${user}`}</div>
+        <Link to={`/${user}`}><div className='tweetUser'>{`@${user}`}</div></Link>
         <div className='tweetText'>{`"${tweet}"`}</div>
         <div className='tweetDate'>{renderDate(date)}</div>
       </div>
