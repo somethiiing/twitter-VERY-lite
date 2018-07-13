@@ -1,6 +1,6 @@
 run server with `node server.js`. located at localhost:8080 .
 
-run dev front end with `yarn start`. can make changes to front end here.
+run dev front end with `yarn start`. can make changes to front end here. runs on localhost:3000. api proxy is pointed to localhost:8080, so you'll need the server running for it to work.
 
 run "production" by running `npm run build`, after building, run `node server.js`, located at localhost:8080
 
@@ -17,5 +17,6 @@ things I would do in a production:
   - kind of like how `tweet.js` is refactored out.
 - refactor out some helper functions
 - use higher order components
-- make header functionality actually work...
-
+- make header functionality actually work
+- not have the mongodb pw inside the server file.
+- add more styling + functionality
