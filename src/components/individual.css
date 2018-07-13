@@ -22,10 +22,16 @@
   align-items: center;
 }
 
+input[type=text] {
+  padding: 0 15px !important;
+}
+
 .newTweetInput {
   font-size: 14px;
-  width: 70%;
+  width: 60%;
   height: 30px;
+  border-radius: 20px;
+  border: 1px solid lightgray;
 }
 
 input[type=text]:focus{

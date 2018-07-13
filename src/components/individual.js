@@ -53,7 +53,7 @@ class Individual extends React.Component {
           </div>
           <div className='newTweet'>
             <input className='newTweetInput' type='text' value={newTweet} onChange={this.onNewTweetChange} />
-            <button className='headerTweetButton' onClick={this.newTweetSubmit} >Send Tweet</button>
+            <button className='headerTweetButton' onClick={this.newTweetSubmit} >Tweet</button>
           </div>
         </div>
       </div>
