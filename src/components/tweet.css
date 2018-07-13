@@ -1,0 +1,37 @@
+.tweet {
+  display: flex;
+  padding: 10px;
+}
+
+.profilePicBar {
+  display: flex;
+  justify-content: center;
+  width: 17%;
+}
+
+.profilePic {
+  height: 80px;
+  width: 80px;
+}
+
+.tweetArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 5px;
+  padding-left: 10px;
+  width: 83%;
+}
+
+.tweetUser {
+  font-weight: 800;
+}
+
+.tweetText {
+  font-weight: 300;
+}
+
+.tweetDate {
+  color: gray;
+  font-weight: 200;
+}

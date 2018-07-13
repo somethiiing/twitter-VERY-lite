@@ -1,0 +1,32 @@
+.home {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  background-color: white;
+  margin: 0 4px;
+  box-shadow: 0 0 3px gray;
+  border-radius: 2px;
+}
+
+.profile {
+  width: 25%;
+  height: 400px;
+}
+
+.tweets {
+  width: 50%;
+  min-height: 600px;
+  height: fit-content;
+}
+
+.tweetDiv {
+  border-bottom: 1px solid lightgray;
+}
+
+.otherInfo {
+  width: 25%;
+  height: 300px;
+}

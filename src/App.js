@@ -1,18 +1,23 @@
 import React from 'react';
 import  { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import { All, Individual } from './components';
+import { Home, Individual, Header } from './components';
 
 class App extends React.Component {
 
   render() {
     return (
-      <Router>
-        <Switch>
-          <Route exact path='/' component={All} />
-          <Route path='/:user' component={Individual} />
-        </Switch>
-      </Router>
+      <div className='App'>
+        <Header />
+        <div className='content' >          
+          <Router>
+            <Switch>
+              <Route exact path='/' component={Home} />
+              <Route path='/:user' component={Individual} />
+            </Switch>
+          </Router>
+        </div>
+      </div>
     );
   }
 }

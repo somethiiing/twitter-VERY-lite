@@ -1,6 +1,7 @@
 import React from 'react';
 import { postData } from '../Utilities';
 import { withRouter } from 'react-router-dom';
+import { Tweet } from './';
 
 class Individual extends React.Component {
   constructor(props) {
@@ -52,6 +53,12 @@ class Individual extends React.Component {
         <br/>
         <input type='text' value={newTweet} onChange={this.onNewTweetChange} />
         <button onClick={this.newTweetSubmit} >Send Tweet</button>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <Tweet user={user} tweet={tweet} />
+        <br/>
       </div>
     );
   }
